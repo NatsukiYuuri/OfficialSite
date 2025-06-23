@@ -1,6 +1,6 @@
 // vite.config.js
 export default {
-  root: './dist', // index.html のある場所
+  root: './docs', // index.html のある場所
   css: {
     preprocessorOptions: {
       stylus: {},

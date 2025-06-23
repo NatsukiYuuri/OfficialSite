@@ -7,8 +7,10 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "watch": "npm-run-all --parallel stylus:watch ts:watch",
-    "stylus:watch": "stylus src/styl/main.styl -o dist/assets/css --watch",
+    "watch": "npm-run-all --parallel stylus:watch-main stylus:watch-gallery ts:watch",
+    "watch-main": "npm-run-all --parallel stylus:watch-main ts:watch",
+    "stylus:watch-main": "stylus src/styl/mainpage/mainpage.styl -o docs/assets/css/mainpage.css --watch",
+    "stylus:watch-gallery": "stylus src/styl/gallery/gallery.styl -o docs/assets/css/gallery.css --watch",
     "ts:watch": "tsc --watch",
     "vite": "vite"
   },

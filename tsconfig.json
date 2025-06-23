@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2020",                 // 出力するJavaScriptのバージョン
     "module": "CommonJS",               // Node.js 向けモジュール
-    "outDir": "dist/assets/js",         // 出力先フォルダ
+    "outDir": "docs/assets/js",         // 出力先フォルダ
     "rootDir": "src/ts",                // ソースコードのルート
     "strict": true,                     // 厳格な型チェック
     "esModuleInterop": true,            // CommonJS モジュールとの互換性
@@ -10,5 +10,5 @@
     "skipLibCheck": true                // 型定義ファイルのチェックをスキップ
   },
   "include": ["src/ts"],
-  "exclude": ["node_modules", "dist/assets/js"]
+  "exclude": ["node_modules", "docs/assets/js"]
 }

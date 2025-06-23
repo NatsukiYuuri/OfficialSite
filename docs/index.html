@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>名月ゆうり</title><!-- TODO:タイトルみんなで考える -->
+    <title>名月ゆうり</title><!-- TODO:タイトル考える -->
+
+    <!-- css -->
+    <link rel="stylesheet" href="./assets/css/mainpage.css">
 
     <!-- フォント -->
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
-
-    <!-- css -->
-    <link rel="stylesheet" href="./assets/css/main.css">
 
 </head>
 <body>
@@ -23,6 +23,7 @@
         <!-- トップ画像 -->
         <div class="top">
             <!-- 一枚絵 -->
+            <span>ゆうりくんのぺーじ</span>
         </div>
 
         <!-- ようこそ -->
@@ -38,10 +39,18 @@
             <!-- SNSリンク集 -->
             <h2>SNS</h2>
             <div class="_sns_links">
-                <button>X</button>
-                <button>Twitch</button>
-                <button>ツイキャス</button>
-                <button>IRIAM</button>
+                <a href="https://x.com/mochi_mocha_y">
+                    <img src="./assets/res/sns_icons/X.png">
+                </a>
+                <a href="https://www.twitch.tv/natsukiyuuri">
+                    <img src="./assets/res/sns_icons/twtich.png">
+                </a>
+                <a href="https://twitcasting.tv/mochi_mocha_y">
+                    <img src="./assets/res/sns_icons/twicas.png">
+                </a>
+                <a href="https://t.co/OGHdU1FpZ3">
+                    <span>IRIAM</span> <!-- 画像素材見つけたら追加 -->
+                </a>
             </div>
         </div>
 
@@ -50,25 +59,30 @@
             <!--  -->
             <div class="_common">
                 <div class="_about-me">
-                    <button>僕について</button>
+                    <a href="./myProfile.html">
+                        <img src="./assets/res/mainpage/about_me.png">
+                    </a>
                 </div>
                 <div class="_etc">
-                    <button>画廊</button>
-                    <button>スクショ</button>
-                    <button>おすすめ配信</button>
+                    <a href="./gallery.html">画廊</a>
+                    <a href="./screenShot.html">スクショ</a>
+                    <a href="./recommendation.html">おすすめ</a>
                 </div>
 
-            </div>
-
-            <!--  -->
-            <div class="_game">
-                Comming soon...
             </div>
 
             <!--  -->
             <div class="_special">
-
+                <h2>スペシャル</h2>
+                Comming soon...
             </div>
+
+            <!--  -->
+            <div class="_game">
+                <h2>ゲーム</h2>
+                Comming soon...
+            </div>
+
         </div>
     </div>
 
