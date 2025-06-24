@@ -62,6 +62,10 @@ body {
 .main-page .page-links ._common ._etc a {
   width: 30%;
   aspect-ratio: 1/1;
+}
+.main-page .page-links ._common ._etc a img {
+  width: 100%;
+  object-fit: contain;
   border-radius: 15px;
   border: 2px solid #000;
 }
