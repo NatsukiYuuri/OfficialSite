@@ -1,5 +1,13 @@
 body {
-  margin: 0;
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+body a {
+  text-decoration: none;
 }
 #cursor-circle {
   position: fixed;

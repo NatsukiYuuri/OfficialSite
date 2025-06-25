@@ -1,5 +1,13 @@
 body {
-  margin: 0;
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+body a {
+  text-decoration: none;
 }
 #cursor-circle {
   position: fixed;
@@ -76,21 +84,10 @@ body {
   margin: 20px 0 20px 0;
   padding: 30px 50px 30px 50px;
 }
-body {
-  max-width: 750px;
-  margin: 0 auto;
-}
-body a {
-  text-decoration: none;
-}
 .main-page {
   padding-bottom: 530px;
   background-color: #d9eff9;
-  text-align: center;
   color: #323c48;
-  font-family: "Zen Maru Gothic", sans-serif;
-  font-weight: 500;
-  font-style: normal;
 }
 .main-page button {
   font-family: "Zen Maru Gothic", sans-serif;
