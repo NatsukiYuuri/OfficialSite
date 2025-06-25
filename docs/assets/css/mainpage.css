@@ -145,3 +145,58 @@ body a {
   font-weight: 500;
   color: #fff;
 }
+.main-page ._schedule {
+  width: 90%;
+  margin: 20px 5% 0 5%;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 10px;
+}
+.main-page ._schedule ._top-frame {
+  width: 80%;
+  margin: 10px 10% 0 10%;
+  border-bottom: 2px solid #6a7f9b;
+}
+.main-page ._schedule ._top-frame ._title {
+  font-size: clamp(24px, 5vw, 35px);
+}
+.main-page ._schedule ._top-frame ._term {
+  font-size: clamp(13px, 3vw, 22px);
+}
+.main-page ._schedule ._contents {
+  width: 90%;
+  margin: 10px 5% 0 5%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.main-page ._schedule ._contents ._day-of-the-week {
+  display: flex;
+  height: 48px;
+  border: 2px solid #6a7f9b;
+  border-radius: 25px;
+}
+.main-page ._schedule ._contents ._day-of-the-week ._title {
+  width: 50px;
+  height: 50px;
+  margin: -1px 0 0 -2px;
+  background-color: #6a7f9b;
+  color: #fff;
+  font-weight: 600;
+  font-size: 29px;
+  border-radius: 50%;
+}
+.main-page ._schedule ._contents ._day-of-the-week ._detail {
+  margin: 0 10px 0 7px;
+  text-align: left;
+}
+.main-page ._schedule ._contents ._day-of-the-week ._detail img {
+  width: 12px;
+  vertical-align: -2px;
+}
+.main-page ._schedule ._notes {
+  font-size: clamp(12px, 3vw, 16px);
+  margin-right: 15px;
+  text-align: right;
+}

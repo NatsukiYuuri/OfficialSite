@@ -57,3 +57,48 @@
                     font-size: 20px
                     font-weight: 500
                     color: #ffffff
+    ._schedule
+        width: 90%
+        margin: 20px 5% 0 5%
+        background-color: #ffffff
+        border: 2px solid #000000
+        border-radius: 10px
+        ._top-frame
+            width: 80%
+            margin: 10px 10% 0 10%
+            border-bottom: 2px solid #6A7F9B
+            ._title
+                font-size: clamp(24px, 5vw, 35px)
+            ._term
+                font-size: clamp(13px, 3vw, 22px)
+        ._contents
+            width: 90%
+            margin: 10px 5% 0 5%
+            display: flex
+            flex-wrap: wrap
+            gap: 10px
+            justify-content: center
+            ._day-of-the-week
+                display: flex
+                height: 48px
+                border: 2px solid #6A7F9B
+                border-radius: 25px
+                ._title
+                    width: 50px
+                    height: 50px
+                    margin: -1px 0 0 -2px
+                    background-color: #6A7F9B
+                    color: #ffffff
+                    font-weight: 600
+                    font-size: 29px
+                    border-radius: 50%
+                ._detail
+                    margin: 0 10px 0 7px
+                    text-align: left
+                    img
+                        width: 12px
+                        vertical-align: -2px
+        ._notes
+            font-size: clamp(12px, 3vw, 16px)
+            margin-right: 15px
+            text-align: right
