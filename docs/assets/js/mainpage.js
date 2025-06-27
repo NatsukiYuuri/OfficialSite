@@ -18,6 +18,26 @@ class MainPage {
                 window.open("https://x.com/intent/post?text=" + message, '_blank');
             });
         }
+        // メニュー開く
+        const menuOpen = document.querySelector("#menu-open-btn");
+        if (menuOpen) {
+            menuOpen.addEventListener("click", (e) => {
+                const menu = document.querySelector("#menu");
+                if (menu) {
+                    menu.style.display = "block";
+                }
+            });
+        }
+        // メニュー閉じる
+        const menuclose = document.querySelector("#menu-close-btn");
+        if (menuclose) {
+            menuclose.addEventListener("click", (e) => {
+                const menu = document.querySelector("#menu");
+                if (menu) {
+                    menu.style.display = "none";
+                }
+            });
+        }
     }
 }
 new MainPage();

@@ -1,3 +1,75 @@
+.menu {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #151c4b;
+  display: block;
+  z-index: 1001;
+}
+.menu ._moon {
+  position: absolute;
+  right: 9px;
+  top: 9px;
+  width: 32px;
+  height: 32px;
+  background-color: #eff0f0;
+  border-radius: 50%;
+}
+.menu ._1,
+.menu ._2,
+.menu ._3,
+.menu ._4,
+.menu ._5,
+.menu ._6,
+.menu ._7 {
+  position: absolute;
+  color: #eff0f0;
+  text-wrap-mode: nowrap;
+}
+.menu ._1 span,
+.menu ._2 span,
+.menu ._3 span,
+.menu ._4 span,
+.menu ._5 span,
+.menu ._6 span,
+.menu ._7 span {
+  display: inline-block;
+  text-align: left;
+  font-size: clamp(25px, 7vw, 45px);
+  font-family: "Moon Dance", cursive;
+  line-height: 0.9em;
+  border-bottom: 1px solid #eff0f0;
+}
+.menu ._1 {
+  top: 15%;
+  left: 35%;
+}
+.menu ._2 {
+  top: 28%;
+  left: 40%;
+}
+.menu ._3 {
+  top: 35%;
+  left: 37%;
+}
+.menu ._4 {
+  top: 45%;
+  left: 35%;
+}
+.menu ._5 {
+  top: 53%;
+  left: 25%;
+}
+.menu ._6 {
+  top: 63%;
+  left: 45%;
+}
+.menu ._7 {
+  top: 71%;
+  left: 35%;
+}
 body {
   max-width: 750px;
   margin: 0 auto;
@@ -26,13 +98,33 @@ body a {
   left: 0;
   width: 100%;
   height: 50px;
-  background-color: #76778c;
+  background-color: #5a7a9a;
   z-index: 1000;
+}
+.header #menu-open-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 30px;
+  height: 30px;
+}
+.header #menu-open-btn:hover ._moon {
+  margin: 3px 0 0 10px;
+  width: 22px;
+  height: 22px;
+  box-shadow: -6px 1px 0 5px #eff0f0;
+}
+.header ._moon {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 0px 0px 0 1px #eff0f0;
 }
 .footer {
   width: 100%;
   height: 60px;
-  background-color: #76778c;
+  background-color: #5a7a9a;
 }
 .zen-maru-gothic-regular {
   font-family: "Zen Maru Gothic", sans-serif;

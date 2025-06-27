@@ -19,7 +19,26 @@ class MainPage {
             })
         }
 
-
+        // メニュー開く
+        const menuOpen = document.querySelector("#menu-open-btn") as HTMLElement;
+        if(menuOpen) {
+            menuOpen.addEventListener("click", (e) => {
+                const menu = document.querySelector("#menu") as HTMLElement;
+                if(menu) {
+                    menu.style.display = "block"
+                }
+            })
+        }
+        // メニュー閉じる
+        const menuclose = document.querySelector("#menu-close-btn") as HTMLElement;
+        if(menuclose) {
+            menuclose.addEventListener("click", (e) => {
+                const menu = document.querySelector("#menu") as HTMLElement;
+                if(menu) {
+                    menu.style.display = "none"
+                }
+            })
+        }
     }
 }
 

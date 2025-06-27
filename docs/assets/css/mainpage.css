@@ -1,3 +1,75 @@
+.menu {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #151c4b;
+  display: block;
+  z-index: 1001;
+}
+.menu ._moon {
+  position: absolute;
+  right: 9px;
+  top: 9px;
+  width: 32px;
+  height: 32px;
+  background-color: #eff0f0;
+  border-radius: 50%;
+}
+.menu ._1,
+.menu ._2,
+.menu ._3,
+.menu ._4,
+.menu ._5,
+.menu ._6,
+.menu ._7 {
+  position: absolute;
+  color: #eff0f0;
+  text-wrap-mode: nowrap;
+}
+.menu ._1 span,
+.menu ._2 span,
+.menu ._3 span,
+.menu ._4 span,
+.menu ._5 span,
+.menu ._6 span,
+.menu ._7 span {
+  display: inline-block;
+  text-align: left;
+  font-size: clamp(25px, 7vw, 45px);
+  font-family: "Moon Dance", cursive;
+  line-height: 0.9em;
+  border-bottom: 1px solid #eff0f0;
+}
+.menu ._1 {
+  top: 15%;
+  left: 35%;
+}
+.menu ._2 {
+  top: 28%;
+  left: 40%;
+}
+.menu ._3 {
+  top: 35%;
+  left: 37%;
+}
+.menu ._4 {
+  top: 45%;
+  left: 35%;
+}
+.menu ._5 {
+  top: 53%;
+  left: 25%;
+}
+.menu ._6 {
+  top: 63%;
+  left: 45%;
+}
+.menu ._7 {
+  top: 71%;
+  left: 35%;
+}
 body {
   max-width: 750px;
   margin: 0 auto;
@@ -26,13 +98,33 @@ body a {
   left: 0;
   width: 100%;
   height: 50px;
-  background-color: #76778c;
+  background-color: #5a7a9a;
   z-index: 1000;
+}
+.header #menu-open-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 30px;
+  height: 30px;
+}
+.header #menu-open-btn:hover ._moon {
+  margin: 3px 0 0 10px;
+  width: 22px;
+  height: 22px;
+  box-shadow: -6px 1px 0 5px #eff0f0;
+}
+.header ._moon {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 0px 0px 0 1px #eff0f0;
 }
 .footer {
   width: 100%;
   height: 60px;
-  background-color: #76778c;
+  background-color: #5a7a9a;
 }
 .zen-maru-gothic-regular {
   font-family: "Zen Maru Gothic", sans-serif;
@@ -85,8 +177,7 @@ body a {
   padding: 30px 50px 30px 50px;
 }
 .main-page {
-  padding-bottom: 530px;
-  background-color: #d9eff9;
+  background-color: #cadaee;
   color: #323c48;
 }
 .main-page button {
@@ -108,7 +199,7 @@ body a {
 }
 .main-page .welcome h2 {
   width: 92%;
-  border-bottom: 2px solid #6a7f9b;
+  border-bottom: 2px solid #151c4b;
   margin-left: 4%;
 }
 .main-page .welcome ._X-share-with-tag {
@@ -127,7 +218,7 @@ body a {
   aspect-ratio: 1/1;
   padding: 0;
   display: inline-flex;
-  background-color: #6a7f9b;
+  background-color: #5a7a9a;
   border: 2px solid #000;
 }
 .main-page .welcome ._sns_links a img {
@@ -141,7 +232,7 @@ body a {
   text-align: center;
   margin-top: 50%;
   transform: translate(0, -50%);
-  font-size: 20px;
+  font-size: clamp(12px, 5vw, 38px);
   font-weight: 500;
   color: #fff;
 }
@@ -155,7 +246,7 @@ body a {
 .main-page ._schedule ._top-frame {
   width: 80%;
   margin: 10px 10% 0 10%;
-  border-bottom: 2px solid #6a7f9b;
+  border-bottom: 2px solid #151c4b;
 }
 .main-page ._schedule ._top-frame ._title {
   font-size: clamp(24px, 5vw, 35px);
@@ -174,14 +265,14 @@ body a {
 .main-page ._schedule ._contents ._day-of-the-week {
   display: flex;
   height: 48px;
-  border: 2px solid #6a7f9b;
+  border: 2px solid #151c4b;
   border-radius: 25px;
 }
 .main-page ._schedule ._contents ._day-of-the-week ._title {
   width: 50px;
   height: 50px;
   margin: -1px 0 0 -2px;
-  background-color: #6a7f9b;
+  background-color: #151c4b;
   color: #fff;
   font-weight: 600;
   font-size: 29px;
@@ -190,6 +281,7 @@ body a {
 .main-page ._schedule ._contents ._day-of-the-week ._detail {
   margin: 0 10px 0 7px;
   text-align: left;
+  align-content: center;
 }
 .main-page ._schedule ._contents ._day-of-the-week ._detail img {
   width: 12px;
