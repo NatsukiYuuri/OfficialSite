@@ -1,5 +1,5 @@
 "use strict";
-class MainPage {
+class Common {
     constructor() {
         // マウスカーソル
         const circle = document.querySelector("#cursor-circle");
@@ -8,14 +8,6 @@ class MainPage {
                 circle.style.display = "block";
                 circle.style.left = `${e.clientX}px`;
                 circle.style.top = `${e.clientY}px`;
-            });
-        }
-        // シェアボタン
-        const XshareBtn = document.querySelector("#X-share-with-tag");
-        if (XshareBtn) {
-            XshareBtn.addEventListener("click", (e) => {
-                const message = "だいすき！！%0A@mochi_mocha_y%0A%0A%23ゆうりくんみて";
-                window.open("https://x.com/intent/post?text=" + message, '_blank');
             });
         }
         // メニュー
@@ -62,4 +54,4 @@ class MainPage {
         }
     }
 }
-new MainPage();
+new Common();

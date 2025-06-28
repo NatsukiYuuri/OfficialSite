@@ -7,10 +7,11 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "watch": "npm-run-all --parallel stylus:watch-main stylus:watch-gallery stylus:watch-myProfile ts:watch",
+    "watch": "npm-run-all --parallel stylus:watch-main stylus:watch-gallery stylus:watch-myProfile stylus:watch-screenShot ts:watch",
     "stylus:watch-main": "stylus src/styl/mainpage/mainpage.styl -o docs/assets/css/mainpage.css --watch",
     "stylus:watch-gallery": "stylus src/styl/gallery/gallery.styl -o docs/assets/css/gallery.css --watch",
     "stylus:watch-myProfile": "stylus src/styl/myProfile/myProfile.styl -o docs/assets/css/myProfile.css --watch",
+    "stylus:watch-screenShot": "stylus src/styl/screenShot/screenShot.styl -o docs/assets/css/screenShot.css --watch",
     "ts:watch": "tsc --watch",
     "vite": "vite"
   },

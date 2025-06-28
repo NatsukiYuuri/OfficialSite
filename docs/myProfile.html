@@ -10,13 +10,36 @@
 
     <!-- フォント -->
     <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Moon+Dance&display=swap" rel="stylesheet">
 
 </head>
 <body>
     <!-- ヘッダー -->
-    <div class="header">
+    <div id="header" class="header">
+        <div id="menu-open-btn" class="menu-open-btn">
+            <div class="_moon"></div>
+        </div>
     </div>
 
+    <!-- メニュー -->
+    <div id="menu" class="menu">
+        <div id="menu-close-btn" class="_moon"></div>
+        
+        <div class="_links">
+            <a href="./index.html" class="_1">・<span>home</span></a>
+            <a href="./myProfile.html" class="_2">・<span>about me</span></a>
+            <a href="./gallery.html" class="_3">・<span>gallery</span></a>
+            <a href="./screenShot.html" class="_4">・<span>screen shot</span></a>
+            <a href="./recommendation.html" class="_5">・<span>recommendation</span></a>
+            <a href="" class="_6">・<span>special</span></a>
+            <a href="" class="_7">・<span>games</span></a>
+            
+            <svg class="lines">
+                <polyline points="" />
+            </svg>
+        </div>
+    </div>
+    
     <div class="myProfile">
 
         <!-- トップ画像 -->
@@ -85,7 +108,8 @@
     </div>
     
     <!-- カーソル(取得できない場合は非表示) -->
-    <div id="cursor-circle"></div>
+    <!-- <div id="cursor-circle"></div> -->
+    <script src="./assets/js/common.js"></script>
 
 </body>
 </html>
