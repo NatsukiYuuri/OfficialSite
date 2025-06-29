@@ -174,12 +174,19 @@ body a {
   padding-top: 50px;
   padding-bottom: 30px;
 }
+.screenShot .top {
+  width: 100%;
+  height: 100px;
+  background-color: #fff;
+  padding-top: 70px;
+  font-size: 35px;
+}
 .screenShot ._tab-group {
   display: flex;
   border-bottom: 2px solid #151c4b;
   justify-content: space-between;
   align-items: center;
-  font-size: 5vw;
+  font-size: clamp(12px, 5vw, 45px);
   margin: 50px 0 0 0;
   padding: 0 15% 0 15%;
 }
@@ -195,4 +202,30 @@ body a {
 .screenShot ._tab-group ._select {
   background-color: #5a7a9a;
   color: #eff0f0;
+}
+.screenShot ._picture-list {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
+}
+.screenShot ._picture-list ._picture-list-elem-wrapper {
+  width: 90%;
+  aspect-ratio: 16/9;
+  border: 2px solid #151c4b;
+  margin: 20px 0 0 5%;
+  padding: auto;
+}
+.screenShot ._picture-list ._picture-list-elem-wrapper img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+}
+.screenShot ._picture-list ._share-button {
+  width: 40%;
+  margin: 20px 0 0 30%;
+  font-size: clamp(12px, 4vw, 30px);
+  border-radius: 10px;
+  font-family: "Zen Maru Gothic", sans-serif;
 }

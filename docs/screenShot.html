@@ -46,20 +46,23 @@
         screenShot.tsに画像の総数を定数としておいておく
     -->
     <div id="screenShot" class="screenShot">
+        
+        <!-- トップ画像 -->
+        <div class="top">
+            <!-- 一枚絵 -->
+            <span>おもいで保管庫</span>
+        </div>
+
         <!-- タブ -->
         <div class="_tab-group">
-            <div class="_tab-item _select _self">自撮り</div>
-            <div class="_tab-item _present">提供</div>
+            <div id="screen-shot-tab-self" class="_tab-item _select">自撮り</div>
+            <div id="screen-shot-tab-present" class="_tab-item">提供</div>
         </div>
 
-        <!-- 自撮りページ -->
-        <div class="_self-page" style="display: block">
-            
+        <!-- 画像リスト -->
+        <div id="screen-shot-picture-list" class="_picture-list">
         </div>
-        <!-- プレゼントページ -->
-        <div class="_present-page" style="display: none">
 
-        </div>
     </div>
     
     
