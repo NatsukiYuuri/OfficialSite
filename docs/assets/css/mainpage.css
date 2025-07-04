@@ -246,11 +246,11 @@ body a {
   height: 60px;
 }
 .main-page .welcome ._sns_links {
-  width: 80%;
+  width: 81%;
   margin: 20px 0 20px 10%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px 5%;
 }
 .main-page .welcome ._sns_links a {
   width: 20%;
@@ -258,7 +258,7 @@ body a {
   padding: 0;
   display: inline-flex;
   background-color: #5a7a9a;
-  border: 2px solid #000;
+  border: 1px solid #000;
 }
 .main-page .welcome ._sns_links a img {
   margin: 5% 5%;
