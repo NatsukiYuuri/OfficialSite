@@ -1,4 +1,3 @@
-"use strict";
 class ScreenShot {
     constructor() {
         this.currentPage = 0;
@@ -75,3 +74,4 @@ class ScreenShot {
     }
 }
 new ScreenShot();
+export {};

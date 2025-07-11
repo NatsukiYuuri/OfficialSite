@@ -1,4 +1,3 @@
-"use strict";
 class Common {
     constructor() {
         // マウスカーソル
@@ -55,3 +54,4 @@ class Common {
     }
 }
 new Common();
+export {};

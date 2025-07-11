@@ -188,12 +188,22 @@ body a {
   flex-wrap: wrap;
 }
 .login_stamp_card ._calendar ._days ._day {
+  position: relative;
+  display: block;
   margin-left: -1px;
   margin-top: -1px;
   width: calc((100% / 7) - 1px);
   aspect-ratio: 1/0.9;
   border: 1px solid #151c4b;
   background-color: #fff;
+}
+.login_stamp_card ._calendar ._days ._day img {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
 }
 .login_stamp_card ._calendar ._days ._empty {
   background-color: #afbac1;

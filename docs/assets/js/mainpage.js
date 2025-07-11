@@ -1,4 +1,3 @@
-"use strict";
 class MainPage {
     constructor() {
         // マウスカーソル
@@ -63,3 +62,4 @@ class MainPage {
     }
 }
 new MainPage();
+export {};

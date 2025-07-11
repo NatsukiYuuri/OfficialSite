@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "target": "ES2020",                 // 出力するJavaScriptのバージョン
-    "module": "CommonJS",               // Node.js 向けモジュール
+    "module": "NodeNext",               // Node.js 向けモジュール
     "outDir": "docs/assets/js",         // 出力先フォルダ
     "rootDir": "src/ts",                // ソースコードのルート
     "strict": true,                     // 厳格な型チェック
     "esModuleInterop": true,            // CommonJS モジュールとの互換性
     "forceConsistentCasingInFileNames": true, // 大文字小文字の一貫性チェック
-    "skipLibCheck": true                // 型定義ファイルのチェックをスキップ
+    "skipLibCheck": true,                // 型定義ファイルのチェックをスキップ
+    "moduleResolution": "NodeNext"
   },
   "include": ["src/ts"],
   "exclude": ["node_modules", "docs/assets/js"]

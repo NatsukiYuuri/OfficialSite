@@ -1,5 +1,9 @@
+import { setCookie, getCookie, removeCookie, getCookies } from 'typescript-cookie';
 
 class Event2025LoginStamp {
+
+    private readonly STAMP_RES_PATH = "../assets/res/others/202508event/inkan.png"
+
     constructor() {
         const wrapper = document.getElementById('calendar-days');
         if(wrapper) {
@@ -28,7 +32,7 @@ class Event2025LoginStamp {
 
                 // 要素の中身作成
                 const day = new Date(year, month, i+1).getDay();
-                dayElem.innerText = (i+1).toString() // 日付入れる
+                dayElem.textContent  = (i+1).toString() // 日付入れる
                 if(day == 6 || day == 0 || (i+1) == 11)
                     dayElem.classList.add("_empty"); // 土日祝は休み
                 
@@ -43,8 +47,19 @@ class Event2025LoginStamp {
             }
 
 
-            // 今日のスタンプ追加してcookieに保存
+            // 今日までのスタンプ追加してcookieに保存
+            const img = document.createElement('img');
+            img.src = this.STAMP_RES_PATH;
+            dayElements[5].elem.append(img)
+
+            this.SetCookie([0, 1, 2])
         }
+    }
+
+    SetCookie(_numbers: number[]) {
+        // ２か月後まで残るcookieセット
+        const now = new Date()
+        setCookie('days', JSON.stringify(_numbers), { expires: now.setMonth(now.getMonth()+2) });
     }
 }
 
