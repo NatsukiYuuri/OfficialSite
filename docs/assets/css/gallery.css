@@ -119,6 +119,9 @@ body {
 body a {
   text-decoration: none;
 }
+body a:visited {
+  color: inherit;
+}
 #cursor-circle {
   position: fixed;
   width: 15px;
