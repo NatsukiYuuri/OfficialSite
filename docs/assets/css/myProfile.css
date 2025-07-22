@@ -173,7 +173,7 @@ body a:visited {
   font-style: normal;
 }
 .myProfile {
-  background-image: url("../res/myProfile/BG.png");
+  background-image: url("/assets/res/myProfile/BG.png");
   background-repeat: repeat;
   background-size: 150%;
   padding-top: 50px;
