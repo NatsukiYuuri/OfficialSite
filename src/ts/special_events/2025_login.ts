@@ -101,6 +101,7 @@ class Event2025LoginStamp {
                         setCookie(cookieKeyName, time.value, { expires: now.setMonth(now.getMonth()+2) });
                         (document.getElementById('set-time-window') as HTMLDivElement).style.display = "none"
                         resolve(time.value)
+                        return
                     }
                     console.log("時間が有効ではありません")
                 })

@@ -22,13 +22,13 @@ export default defineConfig({
     rollupOptions: {
       input: inputFiles,
       output: {
-        entryFileNames: 'assets/js/[name].js',
+        entryFileNames: '[name].js',
         format: 'es', // <script>タグで使えるように
         inlineDynamicImports: false,  // これを追加
       },
       external: [], // 依存ライブラリを全て含める
     },
-    outDir: 'docs',
+    outDir: 'assets/js',
     emptyOutDir: true,
     minify: true,
     lib: false, // ライブラリモードを使わない
