@@ -9,6 +9,7 @@ class Event2025LoginStamp {
     private readonly STAMP_RES_PATH = "../assets/res/others/202508event/inkan.png"
     private readonly GRACE_TIME = 40;
     private readonly Month = 7; // 0スタートで8月
+    private readonly RestDays = [11, 14, 15];
 
     constructor() {
         this.Init();
@@ -45,8 +46,10 @@ class Event2025LoginStamp {
                 // 要素の中身作成
                 const day = new Date(year, month, i+1).getDay();
                 dayElem.textContent  = (i+1).toString() // 日付入れる
-                if(day == 6 || day == 0 || (i+1) == 11)
-                    dayElem.classList.add("_empty"); // 土日祝は休み
+                if(day == 6 || day == 0)
+                    dayElem.classList.add("_empty"); // 土日は休み
+                if(this.RestDays.includes(i+1))
+                    dayElem.classList.add("_empty"); // ほか指定した日は休み
                 
                 dayElements[i+1] = dayElem;
             }
@@ -132,7 +135,7 @@ class Event2025LoginStamp {
         const now = new Date();
         if(now.getMonth() != this.Month)
             return false;
-        
+
         const [hh, mm] = targetStr.split(':').map(Number); // 数値に変換！
 
         // Date に渡す（年, 月, 日, 時, 分）
