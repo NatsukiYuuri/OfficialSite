@@ -8,6 +8,7 @@ class Event2025LoginStamp {
 
     private readonly STAMP_RES_PATH = "../assets/res/others/202508event/inkan.png"
     private readonly GRACE_TIME = 40;
+    private readonly YEAR = 2025;
     private readonly Month = 7; // 0スタートで8月
     private readonly RestDays = [11, 14, 15];
 
@@ -17,26 +18,26 @@ class Event2025LoginStamp {
 
     async Init() {
         const referenceTime = await this.PopSetTimeWindowAsync();
+        console.log(referenceTime)
 
         const wrapper = document.getElementById('calendar-days');
         if(wrapper) {
             const date = new Date();
-            const month = this.Month;
-            const year = date.getFullYear();
 
             const dayElements: DayElem = {};
             //===============
             // カレンダー表示
             //===============
             // 左端から1日まで要素埋める
-            const firstDay = new Date(year, month, 1).getDay();
+            const firstDay = new Date(this.YEAR, this.Month, 1).getDay();
             for (let i = 0; i < firstDay; i++) {
                 const day = document.createElement('div');
                 day.classList.add("_day", "_empty");
                 wrapper.append(day);
             }
             // 日付要素作成
-            const daysInMonth = new Date(year, month+1, 0).getDate();
+            let totalDay = 0
+            const daysInMonth = new Date(this.YEAR, this.Month+1, 0).getDate();
             for(let i=0; i<daysInMonth; i++) {
                 // 要素作成
                 const dayElem = document.createElement('div');
@@ -44,17 +45,16 @@ class Event2025LoginStamp {
                 wrapper.append(dayElem);
 
                 // 要素の中身作成
-                const day = new Date(year, month, i+1).getDay();
                 dayElem.textContent  = (i+1).toString() // 日付入れる
-                if(day == 6 || day == 0)
+                if(this.isActiveDay(i))
                     dayElem.classList.add("_empty"); // 土日は休み
-                if(this.RestDays.includes(i+1))
-                    dayElem.classList.add("_empty"); // ほか指定した日は休み
+                else
+                    totalDay++;
                 
                 dayElements[i+1] = dayElem;
             }
             // 31日から右端まで要素埋める
-            const lastDay = new Date(year, month+1, 0).getDay();
+            const lastDay = new Date(this.YEAR, this.Month+1, 0).getDay();
             for(let i = 0; i < (7 - lastDay-1); i++) {
                 const day = document.createElement('div');
                 day.classList.add("_day", "_empty");
@@ -73,18 +73,31 @@ class Event2025LoginStamp {
             }
 
             // 今日のスタンプ追加してcookie保存
-            if(this.isWithinMinutes(referenceTime, this.GRACE_TIME)) {
-                const today = date.getDate();
-                if(!before.includes(today))
-                    before.push(today)
-                this.SetDaysCookie(before)
+            if(this.isActiveDay(date.getDay())) {
+                if(this.isWithinMinutes(referenceTime, this.GRACE_TIME)) {
+                    const today = date.getDate();
+                    if(!before.includes(today))
+                        before.push(today)
+                    this.SetDaysCookie(before)
 
-                // スタンプ押印
-                const img = document.createElement('img');
-                img.src = this.STAMP_RES_PATH;
-                dayElements[today].append(img)
+                    // スタンプ押印
+                    const img = document.createElement('img');
+                    img.src = this.STAMP_RES_PATH;
+                    dayElements[today].append(img)
+                }
             }
+
+            // あなたの情報更新
+            this.SettingUserDatasText(referenceTime, totalDay, before.length)
         }
+    }
+
+    private SettingUserDatasText(_time: string, _total: number, _progress: number) {
+        const time = document.getElementById('login-stamp-card-setting-time-text') as HTMLSpanElement;
+        time.textContent = _time
+
+        const progress = document.getElementById('login-stamp-card-progress-text') as HTMLSpanElement;
+        progress.textContent = _progress.toString() + "/" + _total.toString()
     }
     
     // 時間設定
@@ -142,6 +155,16 @@ class Event2025LoginStamp {
         const target = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hh, mm);
         const diffMs = Math.abs(target.getTime() - now.getTime());
         return diffMs <= withinMinutes * 60 * 1000;
+    }
+    private isActiveDay(num: number) {
+        const day = new Date(this.YEAR, this.Month, num+1).getDay();
+
+        if(day == 6 || day == 0)
+            return true
+        else if(this.RestDays.includes(num+1))
+            return true
+
+        return false
     }
 }
 

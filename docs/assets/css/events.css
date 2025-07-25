@@ -240,3 +240,8 @@ body a:visited {
 .login_stamp_card ._calendar ._days ._empty {
   background-color: #afbac1;
 }
+.login_stamp_card ._user-datas {
+  width: 90%;
+  margin: auto;
+  border-bottom: 1px solid #151c4b;
+}
