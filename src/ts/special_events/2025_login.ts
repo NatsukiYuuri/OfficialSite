@@ -8,6 +8,7 @@ class Event2025LoginStamp {
 
     private readonly STAMP_RES_PATH = "../assets/res/others/202508event/inkan.png"
     private readonly GRACE_TIME = 40;
+    private readonly Month = 7; // 0スタートで8月
 
     constructor() {
         this.Init();
@@ -19,7 +20,7 @@ class Event2025LoginStamp {
         const wrapper = document.getElementById('calendar-days');
         if(wrapper) {
             const date = new Date();
-            const month = 7; // 0スタートで8月
+            const month = this.Month;
             const year = date.getFullYear();
 
             const dayElements: DayElem = {};
@@ -129,6 +130,9 @@ class Event2025LoginStamp {
 
     private isWithinMinutes(targetStr: string, withinMinutes: number): boolean {
         const now = new Date();
+        if(now.getMonth() != this.Month)
+            return false;
+        
         const [hh, mm] = targetStr.split(':').map(Number); // 数値に変換！
 
         // Date に渡す（年, 月, 日, 時, 分）
