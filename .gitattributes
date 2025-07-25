@@ -1,2 +1,2 @@
 # 全てのテキストファイルをLFに統一
-* text=auto eol=lf
+* text=auto eol=crlf
