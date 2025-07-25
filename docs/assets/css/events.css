@@ -212,6 +212,7 @@ body a:visited {
 .login_stamp_card ._calendar ._header {
   width: 100%;
   height: 50px;
+  font-size: 25px;
 }
 .login_stamp_card ._calendar ._days {
   width: calc(100% + 1px);
