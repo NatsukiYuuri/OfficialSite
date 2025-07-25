@@ -19,7 +19,7 @@ class Event2025LoginStamp {
         const wrapper = document.getElementById('calendar-days');
         if(wrapper) {
             const date = new Date();
-            const month = 6; // 0スタートで8月
+            const month = 7; // 0スタートで8月
             const year = date.getFullYear();
 
             const dayElements: DayElem = {};
