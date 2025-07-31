@@ -146,6 +146,7 @@ class Event2025LoginStamp {
 
     private isWithinMinutes(targetStr: string, withinMinutes: number): boolean {
         const now = new Date();
+        console.log("現在：" + now.getMonth() + " 設定："+this.Month)
         if(now.getMonth() != this.Month)
             return false;
 
