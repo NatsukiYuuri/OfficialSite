@@ -161,11 +161,11 @@ class Event2025LoginStamp {
         const day = new Date(this.YEAR, this.Month, num+1).getDay();
 
         if(day == 6 || day == 0)
-            return true
+            return false
         else if(this.RestDays.includes(num+1))
-            return true
+            return false
 
-        return false
+        return true
     }
 }
 
