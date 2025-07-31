@@ -115,7 +115,7 @@ class Event2025LoginStamp {
                     const time = document.getElementById('set-time-window-time') as HTMLInputElement;
                     const isValidTime = /^([01]\d|2[0-3]):[0-5]\d$/.test(time.value);
                     if(isValidTime) {
-                        setCookie(cookieKeyName, time.value, { expires: now.setMonth(now.getMonth()+2) });
+                        setCookie(cookieKeyName, time.value, { expires: 100 });
                         (document.getElementById('set-time-window') as HTMLDivElement).style.display = "none"
                         resolve(time.value)
                         return
@@ -134,7 +134,7 @@ class Event2025LoginStamp {
     SetDaysCookie(_numbers: number[]) {
         // ２か月後まで残るcookieセット
         const now = new Date()
-        setCookie('days', JSON.stringify(_numbers), { expires: now.setMonth(now.getMonth()+2) });
+        setCookie('days', JSON.stringify(_numbers), { expires: 100 });
     }
     GetDaysCookie(): number[] {
         const result = getCookie('days');
