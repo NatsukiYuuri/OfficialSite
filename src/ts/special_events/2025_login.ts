@@ -46,7 +46,7 @@ class Event2025LoginStamp {
 
                 // 要素の中身作成
                 dayElem.textContent  = (i+1).toString() // 日付入れる
-                if(this.isActiveDay(i))
+                if(!this.isActiveDay(i))
                     dayElem.classList.add("_empty"); // 土日は休み
                 else
                     totalDay++;
