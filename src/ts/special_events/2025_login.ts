@@ -33,7 +33,7 @@ class Event2025LoginStamp {
         document.querySelector("#add-first-time") as HTMLElement;
         document.addEventListener("click", (e) => {
             const data = this.GetDaysCookie();
-            if(data.includes(1)) {
+            if(!data.includes(1)) {
                 data.push(1);
                 this.SetDaysCookie(data);
             }
