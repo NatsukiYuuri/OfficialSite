@@ -1,4 +1,4 @@
-import { setCookie, getCookie, removeCookie, getCookies } from 'typescript-cookie';
+import { setCookie, getCookie } from 'typescript-cookie';
 
 interface DayElem {
     [key: number]: HTMLDivElement;
@@ -105,17 +105,17 @@ class Event2025LoginStamp {
         const cookieKeyName = "referenceTime"
         const now = new Date()
         return new Promise<string>((resolve, reject) => {
-            const target = getCookie(cookieKeyName);
+            const target = this.MyGetData(cookieKeyName);
 
             // 未設定
-            if(target == undefined) {
+            if(target == undefined || target == "") {
                 console.log("targetが見つかりません")
                 const submit = document.getElementById('set-time-window-button') as HTMLButtonElement;
                 submit.addEventListener("click", (e) => {
                     const time = document.getElementById('set-time-window-time') as HTMLInputElement;
                     const isValidTime = /^([01]\d|2[0-3]):[0-5]\d$/.test(time.value);
                     if(isValidTime) {
-                        setCookie(cookieKeyName, time.value, { expires: 100 });
+                        this.MySetData(cookieKeyName, time.value);
                         (document.getElementById('set-time-window') as HTMLDivElement).style.display = "none"
                         resolve(time.value)
                         return
@@ -132,16 +132,43 @@ class Event2025LoginStamp {
     }
 
     SetDaysCookie(_numbers: number[]) {
-        // ２か月後まで残るcookieセット
-        const now = new Date()
-        setCookie('days', JSON.stringify(_numbers), { expires: 100 });
+        this.MySetData('days', JSON.stringify(_numbers));
     }
     GetDaysCookie(): number[] {
-        const result = getCookie('days');
+        const result = this.MyGetData('days');
         if(result == undefined)
             return []
 
         return JSON.parse(result)
+    }
+
+    MySetData(_key: string, _data: any) {
+        setCookie(_key, _data, { 
+            expires: 100,
+            path: "/",
+            secure: true,
+            sameSite: "Lax"
+        });
+        localStorage.setItem(_key, _data);
+    }
+    MyGetData(_key: string): any {
+        let result: any = getCookie(_key);
+
+        if(result == undefined || result == "") {
+            result = localStorage.getItem(_key)
+            if(result == null)
+                result = undefined
+        }
+        return result;
+    }
+    MyClearData(_key: string) {
+        setCookie(_key, "", { 
+            expires: 100,
+            path: "/",
+            secure: true,
+            sameSite: "Lax"
+        });
+        localStorage.removeItem(_key)
     }
 
     private isWithinMinutes(targetStr: string, withinMinutes: number): boolean {
@@ -160,7 +187,7 @@ class Event2025LoginStamp {
     private isActiveDay(num: number) {
         const day = new Date(this.YEAR, this.Month, num+1).getDay();
         console.log(day);
-        (document.getElementById('test-text') as HTMLButtonElement).textContent = day.toString();
+        // (document.getElementById('test-text') as HTMLButtonElement).textContent = day.toString();
 
         if(day == 6 || day == 0)
             return false
