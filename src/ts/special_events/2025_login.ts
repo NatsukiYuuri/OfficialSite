@@ -30,6 +30,14 @@ class Event2025LoginStamp {
         document.addEventListener("click", (e) => {
             this.MyClearData(this.DATA_KEYS.ReferenceTime)
         })
+        document.querySelector("#add-first-time") as HTMLElement;
+        document.addEventListener("click", (e) => {
+            const data = this.GetDaysCookie();
+            if(data.includes(1)) {
+                data.push(1);
+                this.SetDaysCookie(data);
+            }
+        })
 
         const wrapper = document.getElementById('calendar-days');
         if(wrapper) {
