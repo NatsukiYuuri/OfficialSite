@@ -36,7 +36,7 @@ class Event2025LoginStamp {
                 data.push(1);
                 this.SetDaysCookie(data);
             }
-            (document.getElementById('#thx-window') as HTMLDivElement).style.display = "block"
+            (document.getElementById('thx-window') as HTMLDivElement).style.display = "block"
         });
         (document.querySelector("#thx-window-close") as HTMLElement).addEventListener("click", (e) => {
             window.location.reload();
