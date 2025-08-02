@@ -157,14 +157,13 @@ class Event2025LoginStamp {
         const diffMs = Math.abs(target.getTime() - now.getTime());
         return diffMs <= withinMinutes * 60 * 1000;
     }
-    private isActiveDay(num: number) {
-        const day = new Date(this.YEAR, this.Month, num+1).getDay();
+    private isActiveDay(day: number) {
         console.log(day);
         (document.getElementById('test-text') as HTMLButtonElement).textContent = day.toString();
 
         if(day == 6 || day == 0)
             return false
-        else if(this.RestDays.includes(num+1))
+        else if(this.RestDays.includes(day+1))
             return false
 
         return true
