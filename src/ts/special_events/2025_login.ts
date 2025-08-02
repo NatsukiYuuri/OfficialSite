@@ -159,7 +159,8 @@ class Event2025LoginStamp {
     }
     private isActiveDay(num: number) {
         const day = new Date(this.YEAR, this.Month, num+1).getDay();
-        console.log(day)
+        console.log(day);
+        (document.getElementById('test-text') as HTMLButtonElement).textContent = day.toString();
 
         if(day == 6 || day == 0)
             return false
