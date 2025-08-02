@@ -163,8 +163,8 @@ class Event2025LoginStamp {
         setCookie(_key, _data, { 
             expires: 100,
             path: "/",
-            secure: true,
-            sameSite: "Lax"
+            // secure: true,
+            // sameSite: "Lax"
         });
         localStorage.setItem(_key, _data);
     }
