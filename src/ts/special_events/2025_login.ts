@@ -28,6 +28,7 @@ class Event2025LoginStamp {
 
         (document.querySelector("#time-reset-button") as HTMLElement).addEventListener("click", (e) => {
             this.MyClearData(this.DATA_KEYS.ReferenceTime)
+            window.location.reload();
         });
         (document.querySelector("#add-first-time") as HTMLElement).addEventListener("click", (e) => {
             const data = this.GetDaysCookie();
@@ -35,7 +36,12 @@ class Event2025LoginStamp {
                 data.push(1);
                 this.SetDaysCookie(data);
             }
-        })
+            (document.getElementById('#thx-window') as HTMLDivElement).style.display = "block"
+        });
+        (document.querySelector("#thx-window-close") as HTMLElement).addEventListener("click", (e) => {
+            window.location.reload();
+        });
+
 
         const wrapper = document.getElementById('calendar-days');
         if(wrapper) {
