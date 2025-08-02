@@ -12,6 +12,12 @@ class Event2025LoginStamp {
     private readonly Month = 7; // 0スタートで8月
     private readonly RestDays = [11, 14, 15];
 
+    private readonly DATA_KEYS = {
+        Name: "key",
+        ReferenceTime: "referenceTime",
+        Days: "days"
+    }
+
     constructor() {
         this.Init();
     }
@@ -19,6 +25,11 @@ class Event2025LoginStamp {
     async Init() {
         const referenceTime = await this.PopSetTimeWindowAsync();
         console.log(referenceTime)
+
+        document.querySelector("#time-reset-button") as HTMLElement;
+        document.addEventListener("click", (e) => {
+            this.MyClearData(this.DATA_KEYS.ReferenceTime)
+        })
 
         const wrapper = document.getElementById('calendar-days');
         if(wrapper) {
@@ -102,10 +113,8 @@ class Event2025LoginStamp {
     
     // 時間設定
     private async PopSetTimeWindowAsync(): Promise<string> {
-        const cookieKeyName = "referenceTime"
-        const now = new Date()
         return new Promise<string>((resolve, reject) => {
-            const target = this.MyGetData(cookieKeyName);
+            const target = this.MyGetData(this.DATA_KEYS.ReferenceTime);
 
             // 未設定
             if(target == undefined || target == "") {
@@ -115,7 +124,7 @@ class Event2025LoginStamp {
                     const time = document.getElementById('set-time-window-time') as HTMLInputElement;
                     const isValidTime = /^([01]\d|2[0-3]):[0-5]\d$/.test(time.value);
                     if(isValidTime) {
-                        this.MySetData(cookieKeyName, time.value);
+                        this.MySetData(this.DATA_KEYS.ReferenceTime, time.value);
                         (document.getElementById('set-time-window') as HTMLDivElement).style.display = "none"
                         resolve(time.value)
                         return
@@ -132,10 +141,10 @@ class Event2025LoginStamp {
     }
 
     SetDaysCookie(_numbers: number[]) {
-        this.MySetData('days', JSON.stringify(_numbers));
+        this.MySetData(this.DATA_KEYS.Days, JSON.stringify(_numbers));
     }
     GetDaysCookie(): number[] {
-        const result = this.MyGetData('days');
+        const result = this.MyGetData(this.DATA_KEYS.Days);
         if(result == undefined)
             return []
 
@@ -186,7 +195,7 @@ class Event2025LoginStamp {
     }
     private isActiveDay(num: number) {
         const day = new Date(this.YEAR, this.Month, num+1).getDay();
-        console.log(day);
+        // console.log(day);
         // (document.getElementById('test-text') as HTMLButtonElement).textContent = day.toString();
 
         if(day == 6 || day == 0)
