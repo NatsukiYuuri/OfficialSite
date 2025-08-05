@@ -32,7 +32,7 @@ class Event2025LoginStamp {
         });
         (document.querySelector("#add-first-time") as HTMLElement).addEventListener("click", (e) => {
             const data = this.GetDaysCookie();
-            if(!data.includes(1)) {
+            if (!data.includes(1)) {
                 data.push(1);
                 this.SetDaysCookie(data);
             }
@@ -42,9 +42,8 @@ class Event2025LoginStamp {
             window.location.reload();
         });
 
-
         const wrapper = document.getElementById('calendar-days');
-        if(wrapper) {
+        if (wrapper) {
             const date = new Date();
 
             const dayElements: DayElem = {};
@@ -60,25 +59,25 @@ class Event2025LoginStamp {
             }
             // 日付要素作成
             let totalDay = 0
-            const daysInMonth = new Date(this.YEAR, this.Month+1, 0).getDate();
-            for(let i=0; i<daysInMonth; i++) {
+            const daysInMonth = new Date(this.YEAR, this.Month + 1, 0).getDate();
+            for (let i = 0; i < daysInMonth; i++) {
                 // 要素作成
                 const dayElem = document.createElement('div');
                 dayElem.classList.add("_day");
                 wrapper.append(dayElem);
 
                 // 要素の中身作成
-                dayElem.textContent  = (i+1).toString() // 日付入れる
-                if(!this.isActiveDay(i))
+                dayElem.textContent = (i + 1).toString() // 日付入れる
+                if (!this.isActiveDay(i))
                     dayElem.classList.add("_empty"); // 土日は休み
                 else
                     totalDay++;
-                
-                dayElements[i+1] = dayElem;
+
+                dayElements[i + 1] = dayElem;
             }
             // 31日から右端まで要素埋める
-            const lastDay = new Date(this.YEAR, this.Month+1, 0).getDay();
-            for(let i = 0; i < (7 - lastDay-1); i++) {
+            const lastDay = new Date(this.YEAR, this.Month + 1, 0).getDay();
+            for (let i = 0; i < (7 - lastDay - 1); i++) {
                 const day = document.createElement('div');
                 day.classList.add("_day", "_empty");
                 wrapper.append(day);
@@ -86,7 +85,7 @@ class Event2025LoginStamp {
 
             // 前日までのスタンプ取得して表示追加
             const before = this.GetDaysCookie();
-            for(let i=0; i<before.length; i++) {
+            for (let i = 0; i < before.length; i++) {
                 const day = before[i];
                 // スタンプ要素
                 const img = document.createElement('img');
@@ -94,21 +93,9 @@ class Event2025LoginStamp {
                 // console.log(day)
                 dayElements[day].append(img)
             }
-
-            // 今日のスタンプ追加してcookie保存
-            if(this.isActiveDay(date.getDate())) {
-                if(this.isWithinMinutes(referenceTime, this.GRACE_TIME)) {
-                    const today = date.getDate();
-                    if(!before.includes(today))
-                        before.push(today)
-                    this.SetDaysCookie(before)
-
-                    // スタンプ押印
-                    const img = document.createElement('img');
-                    img.src = this.STAMP_RES_PATH;
-                    dayElements[today].append(img)
-                }
-            }
+            (document.querySelector("#login-stamp-button") as HTMLElement).addEventListener("click", (e) => {
+                this.PushTodayStamp(date, referenceTime, before, dayElements)
+            });
 
             // あなたの情報更新
             this.SettingUserDatasText(referenceTime, totalDay, before.length)
@@ -122,20 +109,20 @@ class Event2025LoginStamp {
         const progress = document.getElementById('login-stamp-card-progress-text') as HTMLSpanElement;
         progress.textContent = _progress.toString() + "/" + _total.toString()
     }
-    
+
     // 時間設定
     private async PopSetTimeWindowAsync(): Promise<string> {
         return new Promise<string>((resolve, reject) => {
             const target = this.MyGetData(this.DATA_KEYS.ReferenceTime);
 
             // 未設定
-            if(target == undefined || target == "") {
+            if (target == undefined || target == "") {
                 console.log("targetが見つかりません")
                 const submit = document.getElementById('set-time-window-button') as HTMLButtonElement;
                 submit.addEventListener("click", (e) => {
                     const time = document.getElementById('set-time-window-time') as HTMLInputElement;
                     const isValidTime = /^([01]\d|2[0-3]):[0-5]\d$/.test(time.value);
-                    if(isValidTime) {
+                    if (isValidTime) {
                         this.MySetData(this.DATA_KEYS.ReferenceTime, time.value);
                         (document.getElementById('set-time-window') as HTMLDivElement).style.display = "none"
                         resolve(time.value)
@@ -152,19 +139,37 @@ class Event2025LoginStamp {
         })
     }
 
+    // 今日分のスタンプを押す
+    private PushTodayStamp(date: any, referenceTime: any, before: any, dayElements: any) {
+        // 今日のスタンプ追加してcookie保存
+        if (this.isActiveDay(date.getDate())) {
+            if (this.isWithinMinutes(referenceTime, this.GRACE_TIME)) {
+                const today = date.getDate();
+                if (!before.includes(today))
+                    before.push(today)
+                this.SetDaysCookie(before)
+
+                // スタンプ押印
+                const img = document.createElement('img');
+                img.src = this.STAMP_RES_PATH;
+                dayElements[today].append(img)
+            }
+        }
+    }
+
     SetDaysCookie(_numbers: number[]) {
         this.MySetData(this.DATA_KEYS.Days, JSON.stringify(_numbers));
     }
     GetDaysCookie(): number[] {
         const result = this.MyGetData(this.DATA_KEYS.Days);
-        if(result == undefined)
+        if (result == undefined)
             return []
 
         return JSON.parse(result)
     }
 
     MySetData(_key: string, _data: any) {
-        setCookie(_key, _data, { 
+        setCookie(_key, _data, {
             expires: 100,
             path: "/",
             secure: true,
@@ -175,15 +180,15 @@ class Event2025LoginStamp {
     MyGetData(_key: string): any {
         let result: any = getCookie(_key);
 
-        if(result == undefined || result == "") {
+        if (result == undefined || result == "") {
             result = localStorage.getItem(_key)
-            if(result == null)
+            if (result == null)
                 result = undefined
         }
         return result;
     }
     MyClearData(_key: string) {
-        setCookie(_key, "", { 
+        setCookie(_key, "", {
             expires: 100,
             path: "/",
             secure: true,
@@ -194,8 +199,8 @@ class Event2025LoginStamp {
 
     private isWithinMinutes(targetStr: string, withinMinutes: number): boolean {
         const now = new Date();
-        console.log("現在：" + now.getMonth() + " 設定："+this.Month)
-        if(now.getMonth() != this.Month)
+        console.log("現在：" + now.getMonth() + " 設定：" + this.Month)
+        if (now.getMonth() != this.Month)
             return false;
 
         const [hh, mm] = targetStr.split(':').map(Number); // 数値に変換！
@@ -206,13 +211,13 @@ class Event2025LoginStamp {
         return diffMs <= withinMinutes * 60 * 1000;
     }
     private isActiveDay(num: number) {
-        const day = new Date(this.YEAR, this.Month, num+1).getDay();
+        const day = new Date(this.YEAR, this.Month, num + 1).getDay();
         // console.log(day);
         // (document.getElementById('test-text') as HTMLButtonElement).textContent = day.toString();
 
-        if(day == 6 || day == 0)
+        if (day == 6 || day == 0)
             return false
-        else if(this.RestDays.includes(num+1))
+        else if (this.RestDays.includes(num + 1))
             return false
 
         return true
