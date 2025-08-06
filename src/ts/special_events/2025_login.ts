@@ -173,7 +173,7 @@ class Event2025LoginStamp {
             expires: 100,
             path: "/",
             secure: true,
-            sameSite: "Lax"
+            // sameSite: "Lax"
         });
         localStorage.setItem(_key, _data);
     }
