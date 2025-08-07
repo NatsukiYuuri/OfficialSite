@@ -68,7 +68,7 @@ class Event2025LoginStamp {
 
                 // 要素の中身作成
                 dayElem.textContent = (i + 1).toString() // 日付入れる
-                if (!this.isActiveDay(i))
+                if (!this.isActiveDay(i+1))
                     dayElem.classList.add("_empty"); // 土日は休み
                 else
                     totalDay++;
@@ -211,13 +211,13 @@ class Event2025LoginStamp {
         return diffMs <= withinMinutes * 60 * 1000;
     }
     private isActiveDay(num: number) {
-        const day = new Date(this.YEAR, this.Month, num + 1).getDay();
+        const day = new Date(this.YEAR, this.Month, num).getDay();
         // console.log(day);
         // (document.getElementById('test-text') as HTMLButtonElement).textContent = day.toString();
 
         if (day == 6 || day == 0)
             return false
-        else if (this.RestDays.includes(num + 1))
+        else if (this.RestDays.includes(num))
             return false
 
         return true
