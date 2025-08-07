@@ -108,6 +108,9 @@ class Event2025LoginStamp {
 
         const progress = document.getElementById('login-stamp-card-progress-text') as HTMLSpanElement;
         progress.textContent = _progress.toString() + "/" + _total.toString()
+
+        const test = document.getElementById('login-stamp-card-test-text') as HTMLSpanElement;
+        test.textContent = localStorage.getItem(this.DATA_KEYS.Days)
     }
 
     // 時間設定
