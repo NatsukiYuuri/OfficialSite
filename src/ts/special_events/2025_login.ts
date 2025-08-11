@@ -94,7 +94,21 @@ class Event2025LoginStamp {
                 dayElements[day].append(img)
             }
             (document.querySelector("#login-stamp-button") as HTMLElement).addEventListener("click", (e) => {
-                this.PushTodayStamp(date, referenceTime, before, dayElements)
+                // this.PushTodayStamp(date, referenceTime, before, dayElements)
+                // 今日のスタンプ追加してcookie保存
+                if (this.isActiveDay(date.getDate())) {
+                    if (this.isWithinMinutes(referenceTime, this.GRACE_TIME)) {
+                        const today = date.getDate();
+                        if (!before.includes(today))
+                            before.push(today)
+                        this.SetDaysCookie(before)
+
+                        // スタンプ押印
+                        const img = document.createElement('img');
+                        img.src = this.STAMP_RES_PATH;
+                        dayElements[today].append(img)
+                    }
+                }
             });
 
             // あなたの情報更新
@@ -144,20 +158,6 @@ class Event2025LoginStamp {
 
     // 今日分のスタンプを押す
     private PushTodayStamp(date: any, referenceTime: any, before: any, dayElements: any) {
-        // 今日のスタンプ追加してcookie保存
-        if (this.isActiveDay(date.getDate())) {
-            if (this.isWithinMinutes(referenceTime, this.GRACE_TIME)) {
-                const today = date.getDate();
-                if (!before.includes(today))
-                    before.push(today)
-                this.SetDaysCookie(before)
-
-                // スタンプ押印
-                const img = document.createElement('img');
-                img.src = this.STAMP_RES_PATH;
-                dayElements[today].append(img)
-            }
-        }
     }
 
     SetDaysCookie(_numbers: number[]) {
