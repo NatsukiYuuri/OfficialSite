@@ -7,6 +7,7 @@ interface DayElem {
 class Event2025LoginStamp {
 
     private readonly STAMP_RES_PATH = "../assets/res/others/202508event/inkan.png"
+    private readonly SE_DIR_PATH = "../assets/res/others/202508event/sounds/"
     private readonly GRACE_TIME = 40;
     private readonly YEAR = 2025;
     private readonly Month = 7; // 0スタートで8月
@@ -94,6 +95,9 @@ class Event2025LoginStamp {
                 dayElements[day].append(img)
             }
             (document.querySelector("#login-stamp-button") as HTMLElement).addEventListener("click", (e) => {
+                // 音声再生
+                const audio = new Audio(this.SE_DIR_PATH + "voice0001.mp3");
+                audio.play();
                 // this.PushTodayStamp(date, referenceTime, before, dayElements)
                 // 今日のスタンプ追加してcookie保存
                 if (this.isActiveDay(date.getDate())) {
@@ -107,6 +111,7 @@ class Event2025LoginStamp {
                         const img = document.createElement('img');
                         img.src = this.STAMP_RES_PATH;
                         dayElements[today].append(img)
+
                     }
                 }
             });
