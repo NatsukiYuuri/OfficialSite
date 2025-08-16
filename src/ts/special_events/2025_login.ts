@@ -96,7 +96,7 @@ class Event2025LoginStamp {
             }
             (document.querySelector("#login-stamp-button") as HTMLElement).addEventListener("click", (e) => {
                 
-                if((document.getElementById("#is_sound_available_check") as HTMLInputElement).checked) {
+                if((document.getElementById("is_sound_available_check") as HTMLInputElement).checked) {
                     // 音声再生
                     const audio = new Audio(this.SE_DIR_PATH + "voice001.mp3");
                     audio.play();
