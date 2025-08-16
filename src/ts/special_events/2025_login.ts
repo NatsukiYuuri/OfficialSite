@@ -95,9 +95,12 @@ class Event2025LoginStamp {
                 dayElements[day].append(img)
             }
             (document.querySelector("#login-stamp-button") as HTMLElement).addEventListener("click", (e) => {
-                // 音声再生
-                const audio = new Audio(this.SE_DIR_PATH + "voice001.mp3");
-                audio.play();
+                
+                if((document.getElementById("#is_sound_available_check") as HTMLInputElement).checked) {
+                    // 音声再生
+                    const audio = new Audio(this.SE_DIR_PATH + "voice001.mp3");
+                    audio.play();
+                }
 
                 // this.PushTodayStamp(date, referenceTime, before, dayElements)
                 // 今日のスタンプ追加してcookie保存
