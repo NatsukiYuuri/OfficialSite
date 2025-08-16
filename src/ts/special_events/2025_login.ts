@@ -96,12 +96,6 @@ class Event2025LoginStamp {
             }
             (document.querySelector("#login-stamp-button") as HTMLElement).addEventListener("click", (e) => {
                 
-                if((document.getElementById("is_sound_available_check") as HTMLInputElement).checked) {
-                    // 音声再生
-                    const audio = new Audio(this.SE_DIR_PATH + "voice001.mp3");
-                    audio.play();
-                }
-
                 // this.PushTodayStamp(date, referenceTime, before, dayElements)
                 // 今日のスタンプ追加してcookie保存
                 if (this.isActiveDay(date.getDate())) {
@@ -116,6 +110,11 @@ class Event2025LoginStamp {
                         img.src = this.STAMP_RES_PATH;
                         dayElements[today].append(img)
 
+                        // 音声再生
+                        if((document.getElementById("is_sound_available_check") as HTMLInputElement).checked) {
+                            const audio = new Audio(this.SE_DIR_PATH + "voice001.mp1");
+                            audio.play();
+                        }
                     }
                 }
             });
