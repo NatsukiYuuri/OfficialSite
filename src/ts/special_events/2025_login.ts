@@ -99,6 +99,12 @@ class Event2025LoginStamp {
                 // this.PushTodayStamp(date, referenceTime, before, dayElements)
                 // 今日のスタンプ追加してcookie保存
                 if (this.isActiveDay(date.getDate())) {
+
+                    // 音声再生
+                    if((document.getElementById("is_sound_available_check") as HTMLInputElement).checked) {
+                        const audio = new Audio(this.SE_DIR_PATH + "voice001.mp1");
+                        audio.play();
+                    }
                     if (this.isWithinMinutes(referenceTime, this.GRACE_TIME)) {
                         const today = date.getDate();
                         if (!before.includes(today))
@@ -109,12 +115,6 @@ class Event2025LoginStamp {
                         const img = document.createElement('img');
                         img.src = this.STAMP_RES_PATH;
                         dayElements[today].append(img)
-
-                        // 音声再生
-                        if((document.getElementById("is_sound_available_check") as HTMLInputElement).checked) {
-                            const audio = new Audio(this.SE_DIR_PATH + "voice001.mp1");
-                            audio.play();
-                        }
                     }
                 }
             });
