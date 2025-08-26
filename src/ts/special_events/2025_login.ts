@@ -113,7 +113,7 @@ class Event2025LoginStamp {
                         
                         // 音声再生
                         if((document.getElementById("is_sound_available_check") as HTMLInputElement).checked) {
-                            const audio = new Audio(this.SE_DIR_PATH + "voice002.mp3");
+                            const audio = new Audio(this.SE_DIR_PATH + "voice005.mp3");
                             audio.play();
                         }
                     }
