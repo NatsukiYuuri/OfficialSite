@@ -310,6 +310,7 @@ body a:visited {
   height: 48px;
   border: 2px solid #151c4b;
   border-radius: 25px;
+  margin-top: 10px;
 }
 .main-page ._schedule ._contents ._day-of-the-week ._title {
   width: 50px;
